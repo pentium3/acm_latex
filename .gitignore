@@ -1,0 +1,11 @@
+.DS_Store
+*.aux
+*.bbl
+*.blg
+*.log
+*.deps
+paper.pdf
+paper.fdb_latexmk
+paper.fls
+paper.out
+

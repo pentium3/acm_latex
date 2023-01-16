@@ -1,0 +1,9 @@
+%-------------------------------------------------------------------------------
+\section{Preliminaries}\label{sec:background}
+In this section, we provide background on stream processing and clarify basic concepts that we use throughout the paper. 
+
+\subsection{Streaming dataflow concepts}\label{sec:streaming-dataflows}
+
+In the dataflow model~\cite{Akidau2015,carbone2020beyond}, a streaming computation is represented as a logical directed  graph $G=(V,E)$, where vertices in $V$ represent \textbf{operators} and edges in $E$ denote \textbf{data streams}. Upon deployment, the logical graph is translated to a physical execution plan, $G'=(V', E')$, which maps operators to provisioned workers, in practice, threads. We call vertices in $V'$ \textbf{tasks} or \textbf{instances} of a logical operator in $V$ and edges in $E'$ physical data channels.
+Tasks are typically scheduled once and are long-running.
+Each task is assigned to exactly one worker and each worker may execute one or more tasks of the same or different operators. The assignment is system-specific; it is computed at deployment time and remains static throughout job execution, unless a reconfiguration occurs. In a \textbf{data-parallel} execution, all tasks of an operator execute an identical logic on disjoint partitions of the input stream and they communicate  with tasks of upstream and downstream operators via  messages. 
